@@ -37,9 +37,7 @@ class MenuController
 				main_menu
 			when 5
 				puts "Good-bye!"
-				# #8
 				exit(0)
-			# #9
 			else
 				system "clear"
 				puts "Sorry, that is not a valid input"
