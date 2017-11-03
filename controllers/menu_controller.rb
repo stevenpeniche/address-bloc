@@ -14,6 +14,7 @@ class MenuController
 		puts "3 - Search for an entry"
 		puts "4 - Import entries from a CSV"
 		puts "5 - Exit"
+		puts "0 - NUKE"
 		print "Enter your selection: "
 
 		selection = gets.to_i
@@ -38,6 +39,9 @@ class MenuController
 			when 5
 				puts "Good-bye!"
 				exit(0)
+			when 0
+				nuke
+				main_menu
 			else
 				system "clear"
 				puts "Sorry, that is not a valid input"
@@ -134,15 +138,22 @@ class MenuController
 	def delete_entry(entry)
 		address_book.entries.delete(entry)
 		puts "#{entry.name} has been deleted"
-		end
+	end
 
-		def edit_entry(entry)
+	def nuke
+		system "clear"
+		address_book.entries.clear
+		puts "YOUR ADDRESS BOOK HAS BEEN NUKED! NO ENTRIES SURVIVED..."
+	end
+
+	def edit_entry(entry)
 		print "Updated name: "
 		name = gets.chomp
 		print "Updated phone number: "
 		phone_number = gets.chomp
 		print "Updated email: "
 		email = gets.chomp
+
 		entry.name = name if !name.empty?
 		entry.phone_number = phone_number if !phone_number.empty?
 		entry.email = email if !email.empty?
